@@ -1,31 +1,17 @@
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import React from 'react';
 import './index.css';
 
 import App from './App.tsx';
-import CandidateSearch from './pages/CandidateSearch.tsx';
-import SavedCandidates from './pages/SavedCandidates.tsx';
-import ErrorPage from './pages/ErrorPage.tsx';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <CandidateSearch />,
-      },
-      {
-        path: '/SavedCandidates',
-        element: <SavedCandidates />,
-      },
-    ],
-  },
-]);
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById('root'); // Ensure this matches your HTML file
+
 if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(<RouterProvider router={router} />);
+  const root = ReactDOM.createRoot(rootElement); // Create a root for React 18 and later
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
 }
