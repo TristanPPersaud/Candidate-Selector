@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +14,7 @@ const Nav: React.FC = () => {
           <Link to="/search">Search Candidates</Link>
         </li>
         <li>
-          <Link to="/saved">Saved Candidates</Link> {/* Link to SavedCandidates page */}
+          <Link to="/saved">Saved Candidates</Link> 
         </li>
       </ul>
     </nav>

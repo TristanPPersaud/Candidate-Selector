@@ -1,19 +1,30 @@
-import React from 'react';
+
+
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SearchCandidate from './pages/CandidateSearch'; // Import your SearchCandidate component
-import Home from './components/Home';// Import your Home component
 import Nav from './components/Nav'; // Import your Nav component
-import SavedCandidates from './pages/SavedCandidates';// Import your SavedCandidates component
+import SearchCandidate from './pages/CandidateSearch';
+import SavedCandidates from './pages/SavedCandidates';
+import Candidate from './interfaces/Candidate.interface';
+
+
 
 const App: React.FC = () => {
+  const [savedCandidates, setSavedCandidates] = useState<Candidate[]>(() => {
+    const saved = localStorage.getItem('savedCandidates');
+    return saved ? JSON.parse(saved) : [];
+  });
+
   return (
     <Router>
-      <Nav /> {/* Render the Nav component */}
-      <Routes>
-        <Route path="/" element={<Home />} /> {/* Home route */}
-        <Route path="/search" element={<SearchCandidate />} /> {/* SearchCandidate route */}
-        <Route path="/saved" element={<SavedCandidates />} /> {/* SavedCandidates route */}
-      </Routes>
+      <div>
+        <Nav /> 
+        <Routes>
+          <Route path="/" element={<h1>Welcome to the Candidate Selector</h1>} />
+          <Route path="/search" element={<SearchCandidate setSavedCandidates={setSavedCandidates} />} />
+          <Route path="/saved" element={<SavedCandidates savedCandidates={savedCandidates} />} />
+        </Routes>
+      </div>
     </Router>
   );
 };

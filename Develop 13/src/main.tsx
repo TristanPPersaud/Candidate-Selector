@@ -8,7 +8,7 @@ import App from './App.tsx';
 const rootElement = document.getElementById('root'); // Ensure this matches your HTML file
 
 if (rootElement) {
-  const root = ReactDOM.createRoot(rootElement); // Create a root for React 18 and later
+  const root = ReactDOM.createRoot(rootElement); 
   root.render(
     <React.StrictMode>
       <App />
